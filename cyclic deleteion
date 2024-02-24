@@ -1,0 +1,23 @@
+
+bool cycle(sl* head) 
+{
+    if (head == NULL || head->next == NULL) 
+    {
+        return false; 
+    }
+
+    sl* current = head;
+    sl* temp = head->next;
+
+    while (temp != NULL && temp->next != NULL) 
+    {
+        if (current == temp) 
+        {
+            return true; 
+        }
+        current = current->next;
+        temp = temp->next->next;
+    }
+
+    return false; 
+}
