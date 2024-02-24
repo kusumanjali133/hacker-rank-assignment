@@ -1,0 +1,13 @@
+sl* reverse(sl* llist) {
+    sl* prev=NULL;
+    sl* current=llist;
+    sl* temp=NULL;
+    while(current!=NULL)
+    {
+        temp=current->next;
+        current->next=prev;
+        prev=current;
+        current=temp;
+    }
+    return prev;
+}
