@@ -1,0 +1,28 @@
+sl* insertAtPos(sl* list, int data, int position) {
+    if (position < 0) {
+        printf("Invalid position\n");
+        return list;
+    }
+
+    sl* nn = createNode(data);
+
+    if (position == 0) {
+        nn->next = list;
+        return nn;  // Update the head of the list
+    }
+
+    sl* current = list;
+    for (int i = 1; i < position && current != NULL; i++) {
+        current = current->next;
+    }
+
+    if (current == NULL) {
+        printf("Position is out of bounds\n");
+        return list;
+    }
+
+    nn->next = current->next;
+    current->next = nn;
+
+    return list;
+}
