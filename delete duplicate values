@@ -1,0 +1,34 @@
+sl* delduplicate(sl* list) 
+{
+    if (list == NULL || list->next == NULL) 
+    {
+        return list;
+    }
+
+    sl* current = list;
+    sl* temp = NULL;
+    sl* temp1 = NULL;
+
+    while (current != NULL) 
+    {
+        temp = current;
+
+        while (temp->next != NULL) 
+        {
+            if (current->data == temp->next->data) 
+            {
+                temp1 = temp->next;
+                temp->next = temp->next->next;
+                free(temp1);
+                temp1 = NULL;
+            } else 
+            {
+                temp = temp->next;
+            }
+        }
+        
+        current = current->next;
+    }
+
+    return list;
+}
