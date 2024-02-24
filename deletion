@@ -1,0 +1,33 @@
+sl* deleteNode(sl* list, int position) 
+{
+    if (list == NULL) 
+    {
+        printf("List is empty\n");
+    } 
+  else if (position == 0 && list->next == NULL) 
+  {
+        free(list);
+        list = NULL;
+    } 
+  else if (position == 0 && list->next != NULL) 
+  {
+        sl* temp = list;
+        list = list->next;
+        free(temp);
+        temp = NULL;
+    } 
+  else 
+  {
+        sl* temp = list;
+        sl* prev = NULL;
+        for (int i = 1; i <= position; i++) 
+        {
+            prev = temp;
+            temp = temp->next;
+        }
+        prev->next = temp->next;
+        free(temp);
+        temp = NULL;
+    }
+    return list;
+}
